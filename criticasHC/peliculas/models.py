@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse 
 import uuid
 # Create your models here.
-class movie(models.Model):
+class Movie(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4)
 	name = models.CharField (max_length=100)
 	enum_gen =(
@@ -13,4 +13,4 @@ class movie(models.Model):
 	clasif = models.IntegerField ()
 	imagen = models.ImageField (upload_to='media/imagenes', null=True, blank=True, default='media/imagenes/not-found.png') 
 	def __str__(self):
-		f'{self.name},{self.gene},{self.desc},{self.clasif}'
+		return f'{self.name},{self.gene},{self.desc},{self.clasif}'
