@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Movie
+
 # Create your views here.
 def index(request):
 	return render(request, 'index.html')
@@ -12,4 +13,23 @@ def inicio(request):
 	return render(request, 'inicio.html')
 def registro(request):
 	return render(request, 'registro.html')
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+class MovieCreate(CreateView):
+    model = Movie
+    fields ='__all__' 
+
+class MovieUpdate(UpdateView):
+    model = Movie
+    fields = ['name','gene','clasif','desc','imagen']
+
+class MovieDelete(DeleteView):
+    model = Movie
+    success_url = reverse_lazy('criticas')
+
+from django.views import generic
+
+class MovieDetailView(generic.DetailView):
+    model = Movie
 

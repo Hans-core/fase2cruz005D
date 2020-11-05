@@ -12,5 +12,8 @@ class Movie(models.Model):
 	desc = models.TextField (max_length=1000, blank=True, default='')
 	clasif = models.IntegerField ()
 	imagen = models.ImageField (upload_to='media/imagenes', null=True, blank=True, default='media/imagenes/not-found.png') 
+	def get_absolute_url(self):
+			return reverse ('movie_detail',args=[str(self.id)])	
 	def __str__(self):
 		return f'{self.name},{self.gene},{self.desc},{self.clasif}'
+
